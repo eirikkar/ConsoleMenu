@@ -4,6 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        List<string> menuOptions = new List<string>
+        {
+            "Hello, World!",
+            "Test text 1",
+            "Test text 2",
+            "Test text 3",
+        };
     }
 }
