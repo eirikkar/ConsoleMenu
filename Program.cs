@@ -14,29 +14,16 @@ class Program
         int selectedIndex = 0;
         bool exit = false;
 
+        Console.Clear();
+        PrintTitle("Welcome to this cool interactive menu!", ConsoleColor.Yellow);
+        PrintTitle("Use Arrow Keys to navigate, and Enter to select.", ConsoleColor.Green);
+
+        RenderMenu(menuOptions, selectedIndex);
+
         while (!exit)
         {
-            Console.Clear();
-            PrintTitle("Welcome to this cool interactive menu!", ConsoleColor.Yellow);
-            PrintTitle("Use Arrow Keys to navigate, and Enter to select.", ConsoleColor.Green);
-
-            // Display the menu
-            for (int i = 0; i < menuOptions.Count; i++)
-            {
-                if (i == selectedIndex)
-                {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine($"> {menuOptions[i]}");
-                    Console.ResetColor();
-                }
-                else
-                {
-                    Console.WriteLine($"  {menuOptions[i]}");
-                }
-            }
-
-            // Handle user input
-            ConsoleKey key = Console.ReadKey().Key;
+            ConsoleKey key = Console.ReadKey(true).Key;
+            int previousIndex = selectedIndex;
 
             switch (key)
             {
@@ -57,6 +44,12 @@ class Program
                 default:
                     break;
             }
+
+            if (selectedIndex != previousIndex)
+            {
+                UpdateMenuOption(menuOptions, previousIndex, false);
+                UpdateMenuOption(menuOptions, selectedIndex, true);
+            }
         }
 
         Console.Clear();
@@ -75,15 +68,26 @@ class Program
         Console.ResetColor();
     }
 
-    static void PrintAnimatedLine(string line, ConsoleColor color)
+    static void RenderMenu(List<string> options, int selectedIndex)
     {
-        Console.ForegroundColor = color;
-        foreach (char c in line)
+        for (int i = 0; i < options.Count; i++)
         {
-            Console.Write(c);
-            Thread.Sleep(30);
-            Console.WriteLine();
+            UpdateMenuOption(options, i, i == selectedIndex);
+        }
+    }
+
+    static void UpdateMenuOption(List<string> options, int index, bool isSelected)
+    {
+        Console.SetCursorPosition(0, index + 3);
+        if (isSelected)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"> {options[index].PadRight(Console.WindowWidth - 1)}");
             Console.ResetColor();
+        }
+        else
+        {
+            Console.WriteLine($"  {options[index].PadRight(Console.WindowWidth - 1)}");
         }
     }
 
@@ -108,10 +112,21 @@ class Program
                 break;
 
             case "Exit":
-                PrintTitle("Exit", ConsoleColor.Red);
+                PrintTitle("Exiting the menu...", ConsoleColor.Red);
                 Thread.Sleep(1000);
                 exit = true;
                 break;
+        }
+
+        if (!exit)
+        {
+            Console.Clear();
+            PrintTitle("Welcome to this cool interactive menu!", ConsoleColor.Yellow);
+            PrintTitle("Use Arrow Keys to navigate, and Enter to select.", ConsoleColor.Green);
+            RenderMenu(
+                new List<string> { "Hello, World!", "Test text 1", "Test text 2", "Exit" },
+                0
+            );
         }
     }
 }
