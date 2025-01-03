@@ -66,7 +66,7 @@ class Program
         foreach (char c in title)
         {
             Console.Write(c);
-            Thread.Sleep(50);
+            Thread.Sleep(40);
         }
         Console.WriteLine();
         Console.ResetColor();
@@ -142,7 +142,7 @@ class Program
         for (int i = 0; i < 20; i++)
         {
             Console.Write("#");
-            Thread.Sleep(100);
+            Thread.Sleep(30);
         }
         Console.WriteLine("]");
         Console.ResetColor();
