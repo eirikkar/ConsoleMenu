@@ -33,4 +33,16 @@ class Program
         Console.WriteLine();
         Console.ResetColor();
     }
+
+    static void PrintAnimatedLine(string line, ConsoleColor color)
+    {
+        Console.ForegroundColor = color;
+        foreach (char c in line)
+        {
+            Console.Write(c);
+            Thread.Sleep(30); // Faster animation for smaller text
+        }
+        Console.WriteLine();
+        Console.ResetColor();
+    }
 }
