@@ -4,7 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.BackgroundColor = ConsoleColor.DarkGray;
         Console.Clear();
 
         List<string> menuOptions = new List<string>
