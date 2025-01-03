@@ -11,10 +11,15 @@ class Program
             "Test text 2",
             "Test text 3",
         };
-        PrintTitle(
-            "Test text in this title hello world, how are you doing today",
-            ConsoleColor.Cyan
-        );
+        bool exit = false;
+
+        while (!exit)
+        {
+            PrintTitle(
+                "Test text in this title hello world, how are you doing today",
+                ConsoleColor.Cyan
+            );
+        }
     }
 
     static void PrintTitle(string title, ConsoleColor color)
@@ -23,7 +28,7 @@ class Program
         foreach (char c in title)
         {
             Console.Write(c);
-            Thread.Sleep(50); // Slow down printing for animation effect
+            Thread.Sleep(50);
         }
         Console.WriteLine();
         Console.ResetColor();
