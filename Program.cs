@@ -110,8 +110,8 @@ class Program
                 Thread.Sleep(1000);
                 break;
 
-            case "Test text 3":
-                PrintTitle("Test text 3", ConsoleColor.Red);
+            case "Exit":
+                PrintTitle("Exit", ConsoleColor.Red);
                 Thread.Sleep(1000);
                 exit = true;
                 break;
