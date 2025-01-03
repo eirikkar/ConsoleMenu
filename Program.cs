@@ -16,11 +16,54 @@ class Program
 
         while (!exit)
         {
-            PrintTitle(
-                "Test text in this title hello world, how are you doing today",
-                ConsoleColor.Cyan
+            Console.Clear();
+            PrintTitle("Welcome to the Cool Interactive Menu!", ConsoleColor.Yellow);
+            PrintAnimatedLine(
+                "Use Arrow Keys to navigate, and Enter to select.",
+                ConsoleColor.Green
             );
+
+            // Display the menu
+            for (int i = 0; i < menuOptions.Count; i++)
+            {
+                if (i == selectedIndex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($"> {menuOptions[i]}");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.WriteLine($"  {menuOptions[i]}");
+                }
+            }
+
+            // Handle user input
+            ConsoleKey key = Console.ReadKey().Key;
+
+            switch (key)
+            {
+                case ConsoleKey.UpArrow:
+                    selectedIndex =
+                        (selectedIndex == 0) ? menuOptions.Count - 1 : selectedIndex - 1;
+                    break;
+
+                case ConsoleKey.DownArrow:
+                    selectedIndex =
+                        (selectedIndex == menuOptions.Count - 1) ? 0 : selectedIndex + 1;
+                    break;
+
+                case ConsoleKey.Enter:
+                    HandleSelection(menuOptions[selectedIndex], ref exit);
+                    break;
+
+                default:
+                    break;
+            }
         }
+
+        Console.Clear();
+        Console.WriteLine("Thanks for using the interactive menu! Goodbye!");
     }
 
     static void PrintTitle(string title, ConsoleColor color)
@@ -45,32 +88,33 @@ class Program
             Console.WriteLine();
             Console.ResetColor();
         }
-        static void HandleSelection(string option, ref bool exit)
+    }
+
+    static void HandleSelection(string option, ref bool exit)
+    {
+        Console.Clear();
+        switch (option)
         {
-            Console.Clear();
-            switch (option)
-            {
-                case "Hello, World!":
-                    PrintTitle("Hello, World", ConsoleColor.Green);
-                    Thread.Sleep(1000);
-                    break;
+            case "Hello, World!":
+                PrintTitle("Hello, World", ConsoleColor.Green);
+                Thread.Sleep(1000);
+                break;
 
-                case "Test text 1":
-                    PrintTitle("Test text 1", ConsoleColor.Magenta);
-                    Thread.Sleep(1000);
-                    break;
+            case "Test text 1":
+                PrintTitle("Test text 1", ConsoleColor.Magenta);
+                Thread.Sleep(1000);
+                break;
 
-                case "Test text 2":
-                    PrintTitle("Test text 2", ConsoleColor.Blue);
-                    Thread.Sleep(1000);
-                    break;
+            case "Test text 2":
+                PrintTitle("Test text 2", ConsoleColor.Blue);
+                Thread.Sleep(1000);
+                break;
 
-                case "Test text 3":
-                    PrintTitle("Test text 3", ConsoleColor.Red);
-                    Thread.Sleep(1000);
-                    exit = true;
-                    break;
-            }
+            case "Test text 3":
+                PrintTitle("Test text 3", ConsoleColor.Red);
+                Thread.Sleep(1000);
+                exit = true;
+                break;
         }
     }
 }
