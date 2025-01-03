@@ -40,9 +40,36 @@ class Program
         foreach (char c in line)
         {
             Console.Write(c);
-            Thread.Sleep(30); // Faster animation for smaller text
+            Thread.Sleep(30);
+            Console.WriteLine();
+            Console.ResetColor();
         }
-        Console.WriteLine();
-        Console.ResetColor();
+        static void HandleSelection(string option, ref bool exit)
+        {
+            Console.Clear();
+            switch (option)
+            {
+                case "🌟 Start Game":
+                    PrintTitle("Starting the game...", ConsoleColor.Green);
+                    Thread.Sleep(1000); // Simulate a loading screen
+                    break;
+
+                case "⚙️  Settings":
+                    PrintTitle("Opening settings...", ConsoleColor.Magenta);
+                    Thread.Sleep(1000);
+                    break;
+
+                case "❓ Help":
+                    PrintTitle("Here's some help for you!", ConsoleColor.Blue);
+                    Thread.Sleep(1000);
+                    break;
+
+                case "🚪 Exit":
+                    PrintTitle("Exiting the menu...", ConsoleColor.Red);
+                    Thread.Sleep(1000);
+                    exit = true;
+                    break;
+            }
+        }
     }
 }
