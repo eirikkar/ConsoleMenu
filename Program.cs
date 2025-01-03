@@ -11,6 +11,7 @@ class Program
             "Test text 2",
             "Test text 3",
         };
+        int selectedIndex = 0;
         bool exit = false;
 
         while (!exit)
@@ -49,23 +50,23 @@ class Program
             Console.Clear();
             switch (option)
             {
-                case "🌟 Start Game":
-                    PrintTitle("Starting the game...", ConsoleColor.Green);
-                    Thread.Sleep(1000); // Simulate a loading screen
-                    break;
-
-                case "⚙️  Settings":
-                    PrintTitle("Opening settings...", ConsoleColor.Magenta);
+                case "Hello, World!":
+                    PrintTitle("Hello, World", ConsoleColor.Green);
                     Thread.Sleep(1000);
                     break;
 
-                case "❓ Help":
-                    PrintTitle("Here's some help for you!", ConsoleColor.Blue);
+                case "Test text 1":
+                    PrintTitle("Test text 1", ConsoleColor.Magenta);
                     Thread.Sleep(1000);
                     break;
 
-                case "🚪 Exit":
-                    PrintTitle("Exiting the menu...", ConsoleColor.Red);
+                case "Test text 2":
+                    PrintTitle("Test text 2", ConsoleColor.Blue);
+                    Thread.Sleep(1000);
+                    break;
+
+                case "Test text 3":
+                    PrintTitle("Test text 3", ConsoleColor.Red);
                     Thread.Sleep(1000);
                     exit = true;
                     break;
