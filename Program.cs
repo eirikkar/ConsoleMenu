@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.BackgroundColor = ConsoleColor.DarkGray;
+        Console.Clear();
+
         List<string> menuOptions = new List<string>
         {
             "Hello, World!",
@@ -52,6 +55,7 @@ class Program
             }
         }
 
+        Console.ResetColor();
         Console.Clear();
         Console.WriteLine("Thanks for using the interactive menu! Goodbye!");
     }
@@ -83,10 +87,10 @@ class Program
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"> {options[index].PadRight(Console.WindowWidth - 1)}");
-            Console.ResetColor();
         }
         else
         {
+            Console.ResetColor();
             Console.WriteLine($"  {options[index].PadRight(Console.WindowWidth - 1)}");
         }
     }
@@ -97,23 +101,23 @@ class Program
         switch (option)
         {
             case "Hello, World!":
-                PrintTitle("Hello, World", ConsoleColor.Green);
-                Thread.Sleep(1000);
+                PrintTitle("Hello, World!", ConsoleColor.Green);
+                ShowLoadingBar(ConsoleColor.Green);
                 break;
 
             case "Test text 1":
                 PrintTitle("Test text 1", ConsoleColor.Magenta);
-                Thread.Sleep(1000);
+                ShowLoadingBar(ConsoleColor.Magenta);
                 break;
 
             case "Test text 2":
                 PrintTitle("Test text 2", ConsoleColor.Blue);
-                Thread.Sleep(1000);
+                ShowLoadingBar(ConsoleColor.Blue);
                 break;
 
             case "Exit":
                 PrintTitle("Exiting the menu...", ConsoleColor.Red);
-                Thread.Sleep(1000);
+                ShowLoadingBar(ConsoleColor.Red);
                 exit = true;
                 break;
         }
