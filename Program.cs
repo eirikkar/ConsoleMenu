@@ -9,7 +9,7 @@ class Program
             "Hello, World!",
             "Test text 1",
             "Test text 2",
-            "Test text 3",
+            "Exit",
         };
         int selectedIndex = 0;
         bool exit = false;
