@@ -17,11 +17,8 @@ class Program
         while (!exit)
         {
             Console.Clear();
-            PrintTitle("Welcome to the Cool Interactive Menu!", ConsoleColor.Yellow);
-            PrintAnimatedLine(
-                "Use Arrow Keys to navigate, and Enter to select.",
-                ConsoleColor.Green
-            );
+            PrintTitle("Welcome to this cool interactive menu!", ConsoleColor.Yellow);
+            PrintTitle("Use Arrow Keys to navigate, and Enter to select.", ConsoleColor.Green);
 
             // Display the menu
             for (int i = 0; i < menuOptions.Count; i++)
