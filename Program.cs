@@ -129,4 +129,18 @@ class Program
             );
         }
     }
+
+    static void ShowLoadingBar(ConsoleColor color)
+    {
+        Console.WriteLine();
+        Console.ForegroundColor = color;
+        Console.Write("Loading: [");
+        for (int i = 0; i < 20; i++)
+        {
+            Console.Write("#");
+            Thread.Sleep(100);
+        }
+        Console.WriteLine("]");
+        Console.ResetColor();
+    }
 }
